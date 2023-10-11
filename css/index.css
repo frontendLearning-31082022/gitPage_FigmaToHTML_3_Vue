@@ -1,0 +1,446 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+:root {
+  --content_width: 71.31vw;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 14vh;
+  width: var(--content_width);
+  margin: 0 auto;
+}
+header .header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+header .header__logo h1 {
+  margin: 0px;
+}
+header .header__logo img {
+  width: 1.6em;
+}
+header .header__menu {
+  display: flex;
+  gap: 44px;
+  height: fit-content;
+}
+
+header .header__logo {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 125%;
+  color: #292F36;
+}
+header .header__menu {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 125%;
+  color: #292F36;
+}
+
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(90deg, transparent, transparent calc((100% - var(--content_width)) / 2), #E6E6E6 calc((100% - var(--content_width)) / 2 + 1px), transparent calc((100% - var(--content_width)) / 2 + 1px)), linear-gradient(90deg, transparent, transparent calc(39.58% - 1px), #E6E6E6 39.58%, transparent 39.58%), linear-gradient(90deg, transparent, transparent calc(60.41% - 1px), #E6E6E6 60.41%, transparent 60.41%), linear-gradient(90deg, transparent, transparent calc(100% - (100% - var(--content_width)) / 2 - 1px), #E6E6E6 calc(100% - (100% - var(--content_width)) / 2), transparent calc(100% - (100% - var(--content_width)) / 2));
+  transform: translate3d(0, 0, 0);
+}
+
+.big-logo {
+  height: 70.19vh;
+  width: var(--content_width);
+  margin: 0 auto;
+  border-radius: 70px;
+  background-size: cover;
+  background-positions: center;
+  display: flex;
+  align-items: center;
+}
+.big-logo__content {
+  margin: 2px 2px 2px 4.33vw;
+  max-width: 36.14%;
+}
+
+.projects {
+  width: var(--content_width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.projects__info {
+  max-width: 38.39vw;
+  text-align: center;
+}
+.projects__info p {
+  margin-bottom: 93px;
+}
+.projects__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 56px 8.24%;
+  margin-bottom: 96px;
+}
+.projects__list article {
+  position: relative;
+}
+.projects__list img {
+  width: 100%;
+}
+.projects__list button {
+  all: unset;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+.projects__list h2 {
+  margin-bottom: 4px;
+}
+
+.counter {
+  width: var(--content_width);
+  margin: 0 auto;
+  height: 42.31vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 96px;
+}
+.counter::before {
+  background: #F4F0EC;
+  left: 0px;
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  content: "";
+  display: inline-block;
+  z-index: -1;
+}
+.counter__item {
+  border-style: none solid none none;
+  border-color: #CDA274;
+  text-align: center;
+  width: 25%;
+  height: fit-content;
+}
+.counter__item div {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 85px;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  color: #CDA274;
+}
+.counter__item:last-of-type {
+  border: none;
+}
+
+.blog {
+  width: var(--content_width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 76px;
+}
+.blog h1 {
+  margin-bottom: 12px;
+  margin-top: 0px;
+}
+.blog p {
+  width: 67.53%;
+  margin-bottom: 52px;
+}
+.blog__list {
+  display: flex;
+  gap: 27px;
+  flex: 1;
+}
+.blog__article {
+  width: 100%;
+  padding: 21px;
+  text-align: left;
+  position: relative;
+}
+.blog__article h2 {
+  margin-bottom: 39.5px;
+}
+.blog__article .article__img-container {
+  position: relative;
+}
+.blog__article img {
+  width: 100%;
+}
+.blog__article button {
+  all: unset;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+.blog__article .tag {
+  width: 129px;
+  height: 41px;
+  left: 5.88%;
+  bottom: 5.88%;
+  text-align: center;
+  cursor: pointer;
+}
+
+footer {
+  width: var(--content_width);
+  margin: 0 auto;
+  display: flex;
+  padding-bottom: 134px;
+}
+footer * {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+footer .footer__site-logo {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+footer .footer__site-logo img {
+  width: 2em;
+}
+footer .footer__info {
+  width: 32.72%;
+  margin-right: 8.41%;
+}
+footer .footer__info > p {
+  margin-bottom: 31px;
+}
+footer .footer__links {
+  display: flex;
+  gap: 54px;
+}
+footer nav {
+  margin-right: 26.81%;
+}
+footer nav h2 {
+  margin-bottom: 1em;
+}
+footer nav ul {
+  list-style: none;
+  display: grid;
+  gap: 1em;
+  padding: 0;
+}
+footer nav ul a {
+  text-decoration: none;
+}
+footer address {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+footer address p {
+  margin-bottom: -0.32em;
+}
+footer address a {
+  all: unset;
+  cursor: pointer;
+}
+
+.big-logo__content h1 {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 65px;
+  line-height: 125%;
+  color: #292F36;
+}
+.big-logo__content p {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #4D5053;
+}
+.big-logo__content button {
+  padding: 26px 49px 26px 48px;
+  width: 220.14px;
+  height: 75px;
+  background: #292F36;
+  box-shadow: 0px 10px 20px rgba(192, 192, 192, 0.35);
+  border-radius: 18px;
+  border: solid black;
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 125%;
+  color: #FFFFFF;
+}
+
+.projects__info h2 {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  color: #292F36;
+  opacity: 0.8;
+}
+.projects__info p {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #4D5053;
+}
+.projects__list h2 {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  color: #292F36;
+}
+
+.counter__item div {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 85px;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  color: #CDA274;
+}
+.counter__item p {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #4D5053;
+}
+
+.blog h1 {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  color: #292F36;
+}
+.blog p {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #4D5053;
+}
+.blog__article h2 {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  color: #292F36;
+}
+.blog__article time {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  align-items: center;
+  letter-spacing: 0.01em;
+  text-transform: capitalize;
+  color: #4D5053;
+}
+.blog__article .tag {
+  background: #FFFFFF;
+  border-radius: 8px 8px 8px 0px;
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  text-transform: capitalize;
+  color: #4D5053;
+}
+
+footer .footer__info .footer__site-logo p {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 125%;
+  color: #292F36;
+}
+footer .footer__info p {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #4D5053;
+}
+
+footer {
+  width: var(--content_width);
+  margin: 0 auto;
+  display: flex;
+}
+footer nav h2 {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 125%;
+  color: #292F36;
+}
+footer nav ul a {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 300%;
+  letter-spacing: 0.01em;
+  color: #4D5053;
+}
+footer address {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #4D5053;
+}
+footer address p {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 125%;
+  color: #292F36;
+}/*# sourceMappingURL=index.css.map */
