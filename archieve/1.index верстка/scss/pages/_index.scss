@@ -3,6 +3,8 @@
 
 
 body {
+    min-width: 1270px;
+
     $one-0: calc((100% - var(--content_width))/2);
     $one-1: calc(((100% - var(--content_width))/2) + 1px);
     $two-0: calc(39.58%);
@@ -12,7 +14,7 @@ body {
     $fourth-0: calc(100% - (100% - var(--content_width))/2);
     $fourth-1: calc((100% - (100% - var(--content_width))/2) - 1px);
 
-    $line-color: #E6E6E6;
+    $line-color: black;
 
     min-height: 100vh;
     background-image:
