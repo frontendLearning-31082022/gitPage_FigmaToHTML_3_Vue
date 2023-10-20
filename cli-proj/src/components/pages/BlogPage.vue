@@ -74,9 +74,6 @@ export default {
 
 
 <style lang="scss">
-@import '@/assets/scss/base/_vars.scss';
-@import '@/assets/scss/base/_base.scss';
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
