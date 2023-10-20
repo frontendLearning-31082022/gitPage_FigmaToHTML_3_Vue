@@ -1,16 +1,16 @@
 <template>
     <HeaderSection style="margin-bottom: 45px;" />
 
+    <div class="img-logo" :style="{ 'background-image': 'url(' + require('@/assets/img/blog-detail__logo.svg') + ')' }"
+        style="margin-bottom: 200px;"></div>
 
-    <!-- (this.tagsHided['article_'  + name]?.hided==null ?'d':'s') -->
-
-    <section class="blog-detail">
+    <section class="blog-detail" style="margin-bottom: 96px;">
         <div class="blog-detail__articles-list">
             <template v-for="(name, index) of Object.keys($slots)" :key="index">
-                <article :id="'article_' + name" :style="tagsHided['article_' + name]">
+                <article v-if="!tagControl.tagsHided['article_' + name]" :id="'article_' + name">
+
                     <slot :name="name"></slot>
-                    <!-- :style="'display: '+" -->
-                    <div class="quotes" v-if="index != Object.keys($slots).length - 1">
+                    <div class="quotes">
                         <div class="quotes__symbol">
                             &rdquo;
                         </div>
@@ -19,16 +19,17 @@
                             They make the design.
                         </div>
                     </div>
+
                 </article>
 
             </template>
         </div>
         <div class="blog-detail__control-tags">
-            <button v-for="(item, index) in this.tags " :key="index" @click="tagApply($event.target.textContent)">
+            <button v-for="(item, index) in this.tagControl.allTags" :key="index" @click="tagBtnClick(item)"
+                :checked="tagControl.tagsChoosed[item]">
                 {{ item }}
             </button>
         </div>
-
     </section>
 
     <FooterSection />
@@ -38,101 +39,82 @@
 import HeaderSection from '../sections/HeaderSection.vue'
 import FooterSection from '../sections/FooterSection.vue'
 
+import { reactive } from 'vue'
 
 export default {
+    name: 'BlogDetailPage',
+
+    beforeCreate() {
+        this.tagControl = reactive(Object.create({
+            allTags: new Set(),
+            tagsById: new Map(),
+            tagsChoosed: [],
+            tagsHided: [],
+
+            countHided: 0,
+            collectData() {
+                let articles = [...document.querySelectorAll('article')];
+                articles.forEach(x => {
+                    let tag = x.querySelectorAll("[class='tag']")[0].getAttribute('value');
+                    this.tagsById.set(x.id, tag);
+                });
+                [...document.getElementsByClassName('tag')].forEach(x => { this.allTags.add(x.getAttribute('value')) });
+            },
+            isHided(id) {
+                console.log(`id ${id} this.tagsHided ${this.tagsHided == true}`)
+                return 'display: ' + (this.tagsHided == true ? 'none;' : 'initial');
+            },
+            selectTag(tag) {
+                this.tagsChoosed[tag] = true;
+                this.filterArticles();
+            },
+            unSelectTag(tag) {
+                this.tagsChoosed[tag] = false;
+                this.filterArticles();
+            },
+            filterArticles() {
+                let notChoosed = [...this.allTags].filter(x => { return !this.tagsChoosed[x]; });
+                notChoosed = (notChoosed.length == this.allTags.size) ? [] : notChoosed;
+                let idsHide = [...this.tagsById.entries()].filter(([key, value]) => notChoosed.includes(value) && key != null).map(x => x[0]);
+                this.countHided = idsHide.length;
+
+                idsHide.forEach(x => { this.tagsHided[x] = true; })
+
+                let idsShow = [...this.tagsById.entries()].map(x => x[0]).filter((val) => !idsHide.includes(val));
+                idsShow.forEach(x => { this.tagsHided[x] = false; })
+            }
+        }));
+    },
 
     mounted() {
-
-        setTimeout(() => {
-
-            // this.tagControl = Object.create({
-            //     type: "Invertebrates", // Default value of properties
-            //     displayType() {
-            //         // Method which will display type of Animal
-            //         console.log(`suka`);
-            //     },
-            // });
-
-            this.tagsById = new Map();
-            let articles = [...document.querySelectorAll('article')];
-            console.log(articles);
-            articles.forEach(x => {
-                let tag = x.querySelectorAll("[class='tag']")[0].getAttribute('value');
-                console.log(x.id);
-                this.tagsById.set(x.id, tag);
-            });
-        }, 2000)
-    },
-
-    updated() {
-        [...document.getElementsByClassName('tag')].forEach(x => { this.tags.add(x.getAttribute('value')) });
-
-
-        // console.log(articles);
-        // this.tagsHideState= this.$scopedSlots;
-    },
-
-    name: 'BlogDetailPage',
-    data() {
-        return {
-            tags: new Set(),
-            tagsChoosed: new Set(),
-            // tagsById:new Map(),
-            tagsHided: []
+        document.onreadystatechange = () => {
+            if (document.readyState == "complete") {
+                this.tagControl.collectData();
+                this.articlesCount = Object.values(this.$slots).length;
+            }
         }
     },
-
-
     components: {
         HeaderSection, FooterSection
     },
     methods: {
-        tagApply(tag) {
-            this.tagsChoosed.add(tag);
+        tagBtnClick(id) {
+            let tag = id;
+            let state = this.tagControl.tagsChoosed[id] == true ? true : false;
 
-            this.animal1.displayType();
-            // console.log(this.Animal);
-
-            this.tagsUpdate();
-        },
-        tagsUpdate() {
-
-
-            [...this.tagsById.keys()].forEach(x => {
-                this.tagsHided[x] = "display: none;";
-            })
-
-            let arrIDs = [...this.tagsById.entries()].filter(([key, value]) => this.tagsChoosed.has(value) && key != null);
-
-            arrIDs.forEach((value, i) => {
-                let id = value[0];
-                this.tagsHided[id] = "display: initial;";
-                console.log(`iубрать это -- ${i}`);
-            });
-
-
-            console.log(arrIDs);
-
-            // [...document.querySelectorAll('article')].forEach(x => { x.style = "display: none;" });
-
-            // this.tagsChoosed.forEach(tagCur => {
-            //     let need = [...document.querySelectorAll('article')].filter(x => { return x.querySelectorAll("[class='tag']")[0].getAttribute('value') == tagCur; });
-            //     need.forEach(x => x.style = "display: initial;");
-            // })
-
+            if (!state) this.tagControl.selectTag(tag);
+            if (state) this.tagControl.unSelectTag(tag);
         }
     },
-
 }
-
-import { onMounted } from 'vue'
-
-onMounted(() => {
-    console.log(`the component is now mounted.`)
-})
 </script>
 
 <style lang="scss">
+.img-logo {
+    height: 32.5vh;
+    width: 100%;
+}
+
 .blog-detail {
     width: calc(var(--content_width) - 44px);
     margin: 0 auto;
@@ -158,6 +140,13 @@ onMounted(() => {
 
         ol {
             margin-right: 8.71%;
+        }
+
+
+        article:last-child {
+            .quotes {
+                display: none;
+            }
         }
 
         .quotes {
@@ -190,6 +179,11 @@ onMounted(() => {
         gap: 10px;
         height: fit-content;
         flex-wrap: wrap;
+
+        button[checked=true] {
+            background: #292F36;
+            color: #FFFFFF;
+        }
     }
 }
 
@@ -293,6 +287,7 @@ onMounted(() => {
             background-color: #F4F0EC;
             padding: 9px 30px 9px 30px;
             cursor: pointer;
+            border-radius: 10px;
         }
     }
 }
