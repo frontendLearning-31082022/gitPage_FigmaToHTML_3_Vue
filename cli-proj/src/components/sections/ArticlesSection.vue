@@ -26,11 +26,14 @@
 </template>
 
 <script>
+import PaginationBlock from '../sections/PaginationBlock.vue'
+
 export default {
     name: 'ArticlesSection',
     props: {
         articles: []
-    }
+    },
+    components: PaginationBlock
 }
 </script>
 
@@ -62,20 +65,6 @@ export default {
         flex: 1;
         flex-wrap: wrap;
         justify-content: center;
-
-        &__pagination {
-            display: flex;
-            gap: 20px;
-
-            a {
-                text-decoration: none;
-
-                border: 1px solid #CDA274;
-                padding: 15px;
-                border-radius: 50%;
-
-            }
-        }
     }
 
 
@@ -149,18 +138,6 @@ export default {
         color: #4D5053;
     }
 
-    &__list {
-        &__pagination a {
-            font-family: 'Jost';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 150%;
-            text-transform: capitalize;
-            color: #292F36;
-        }
-    }
-
     &__article {
 
         h2 {
@@ -184,10 +161,6 @@ export default {
             text-transform: capitalize;
             color: #4D5053;
         }
-
-        img {}
-
-        button {}
 
         .tag {
             background: #FFFFFF;
