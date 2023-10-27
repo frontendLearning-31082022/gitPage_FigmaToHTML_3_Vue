@@ -9,5 +9,11 @@ module.exports = {
       .test(/\.html$/)
       .use('html-loader')
       .loader('html-loader')
+    config.module
+      .rule('raw')
+      .test(/\.txt$/)
+      .use('raw-loader')
+      .loader('raw-loader')
+      .end()
   }
 };
