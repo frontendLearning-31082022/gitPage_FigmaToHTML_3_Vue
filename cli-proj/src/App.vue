@@ -1,32 +1,36 @@
 <template>
 
-    <BlogDetailPage>
+  <!-- <BlogDetailPage>
       <template #[index] v-for="(item, index) in articles" :key="index">
         <div v-html="item"></div>
       </template>
-    </BlogDetailPage>
+    </BlogDetailPage> -->
 
+
+  <ProjectsPage></ProjectsPage>
 </template>
 <script>
 // import BlogPage from './components/pages/BlogPage.vue'
-import BlogDetailPage from './components/pages/BlogDetailPage.vue'
+// import BlogDetailPage from './components/pages/BlogDetailPage.vue'
+import ProjectsPage from './components/pages/ProjectsPage.vue'
 
 export default {
   name: 'App',
   data() {
     return {
-      articles:[]
+      articles: []
     }
   },
   beforeCreate() {
-    import('@/data/DataBlogArticles.html').then(m => {
-      this.articles = m.default.split('-separ-');
-    });
-  
+    // import('@/data/DataBlogArticles.html').then(m => {
+    //   this.articles = m.default.split('-separ-');
+    // });
+
   },
   components: {
     // BlogPage
-    BlogDetailPage
+    // BlogDetailPage
+    ProjectsPage
   }
 
 }
@@ -34,7 +38,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/scss/base/_vars.scss';
-@import '@/assets/scss/base/_base.scss'; 
+@import '@/assets/scss/base/_base.scss';
 
 #app {
 
@@ -44,6 +48,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  
+
 }
 </style> 
