@@ -1,1 +1,50 @@
-[{"img":"projects__img1.svg","h2":"Minimal Bedroom","a":"Decor / Artchitecture"},{"img":"projects__img2.svg","h2":"Classic Minimal Bedroom","a":"Decor / Artchitecture"},{"img":"projects__img3.svg","h2":"Minimal Bedroom table","a":"Decor / Artchitecture"},{"img":"projects__img4.svg","h2":"Modern Medroom","a":"Decor / Artchitecture"},{"img":"projects__img5.svg","h2":"Minimal Bedroom","a":"Decor / Artchitecture"},{"img":"projects__img6.svg","h2":"Modern Bedroom","a":"Decor / Artchitecture"},{"img":"projects__img7.svg","h2":"System Table","a":"Decor / Artchitecture"},{"img":"projects__img8.svg","h2":"Modern Bedroom","a":"Decor / Artchitecture"}]
+[
+  {
+    "img": "projects__img1.svg",
+    "h2": "Minimal Bedroom",
+    "category": "Bed Room",
+    "a": "Decor / Artchitecture"
+  },
+  {
+    "img": "projects__img2.svg",
+    "h2": "Classic Minimal Bedroom",
+    "category": "Bed Room",
+    "a": "Decor / Artchitecture"
+  },
+  {
+    "img": "projects__img3.svg",
+    "h2": "Minimal Bedroom table",
+    "category": "Bed Room",
+    "a": "Decor / Artchitecture"
+  },
+  {
+    "img": "projects__img4.svg",
+    "h2": "Modern Medroom",
+    "category": "Bed Room",
+    "a": "Decor / Artchitecture"
+  },
+  {
+    "img": "projects__img5.svg",
+    "h2": "Minimal Bedroom",
+    "category": "Bed Room",
+    "a": "Decor / Artchitecture"
+  },
+  {
+    "img": "projects__img6.svg",
+    "h2": "Modern Bedroom",
+    "category": "Bed Room",
+    "a": "Decor / Artchitecture"
+  },
+  {
+    "img": "projects__img7.svg",
+    "h2": "System Table",
+    "category": "Living Area",
+    "a": "Decor / Artchitecture"
+  },
+  {
+    "img": "projects__img8.svg",
+    "h2": "Modern Bedroom",
+    "category": "Bed Room",
+    "a": "Decor / Artchitecture"
+  }
+]

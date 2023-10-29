@@ -7,24 +7,30 @@
     </BannerLogoSection>
 
 
-    <div class="projects">
+    <div class="projects" style="margin-bottom: 200px;">
 
-        <div class="projects__category-chooser">
-            <button>Bathroom</button>
-            <button>Bed Room</button>
-            <button>Kitchan</button>
-            <button>Living Area</button>
-        </div>
 
-        <ul>
+            <FilterModule v-model="hideByCategory" :valuesByIndex="projects.map(x=>x.category)" class="projects__category-chooser" style="margin-bottom: 61px;" >
+                <template #buttons>
+                    <button>Bathroom</button>
+                    <button>Bed Room</button>
+                    <button>Kitchan</button>
+                    <button>Living Area</button>
+                </template>
+            </FilterModule>
+
+
+        <ul style="margin-bottom: 61px;">
             <li v-for="(item, index) in projects" :key="index" class="project" @click="item.favorite = !item.favorite">
-                <img :src="require(`@/assets/img/${item.img}`)">
-                <h2>{{ item.h2 }}</h2>
-                <a>{{ item.a }}</a>
-                <!-- <button :style="'background: url(''@/assets/img/projects__project_button_.svg'')"></button> -->
-                <button
-                    :style="'background: url(\'' + require('@/assets/img/projects__project_button_.svg') + '\')'"></button>
-                <img src="@/assets/img/star-icon.svg" class="favorite-project" v-if="item.favorite">
+                <div class="project__content" v-if="!hideByCategory[index]">
+                    <img :src="require(`@/assets/img/${item.img}`)">
+                    <h2>{{ item.h2 }}</h2>
+                    <a>{{ item.a }}</a>
+                    <!-- <button :style="'background: url(''@/assets/img/projects__project_button_.svg'')"></button> -->
+                    <button
+                        :style="'background: url(\'' + require('@/assets/img/projects__project_button_.svg') + '\')'"></button>
+                    <img src="@/assets/img/star-icon.svg" class="favorite-project" v-if="item.favorite">
+                </div>
             </li>
         </ul>
         <PaginationBlock />
@@ -39,6 +45,7 @@
 import HeaderSection from '../sections/HeaderSection.vue'
 import FooterSection from '../sections/FooterSection.vue'
 import BannerLogoSection from '../sections/BannerLogoSection.vue'
+import FilterModule from '../modules/FilterModule.vue'
 import PaginationBlock from '../sections/PaginationBlock.vue'
 
 
@@ -46,10 +53,11 @@ import projectsData from '@/data/dataProjectsArticles.txt'
 
 export default {
     name: 'ProjectsPage',
-    components: { HeaderSection, FooterSection, BannerLogoSection, PaginationBlock },
+    components: { HeaderSection, FooterSection, BannerLogoSection, FilterModule, PaginationBlock },
     data() {
         return {
-            projects: JSON.parse(projectsData)
+            projects: JSON.parse(projectsData),
+            hideByCategory: []
         }
     },
 }
@@ -63,6 +71,7 @@ export default {
     ul {
         padding: 0;
         list-style-type: none;
+        margin-top: -17.5px;
 
         column-count: 2;
         gap: 30px;
@@ -90,6 +99,7 @@ export default {
                 position: absolute;
                 right: 0px;
                 bottom: 0px;
+                z-index: -1;
             }
 
             .favorite-project {
@@ -131,9 +141,10 @@ export default {
 
             width: calc(100%/4);
         }
-
-        .category-choosed {
+        button[pressed=true] {
             background: #CDA274;
+            border-radius: 18px;
+            color: white;
         }
     }
 }
