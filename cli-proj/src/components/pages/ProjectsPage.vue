@@ -10,14 +10,15 @@
     <div class="projects" style="margin-bottom: 200px;">
 
 
-            <FilterModule v-model="hideByCategory" :valuesByIndex="projects.map(x=>x.category)" class="projects__category-chooser" style="margin-bottom: 61px;" >
-                <template #buttons>
-                    <button>Bathroom</button>
-                    <button>Bed Room</button>
-                    <button>Kitchan</button>
-                    <button>Living Area</button>
-                </template>
-            </FilterModule>
+        <FilterModule v-model="hideByCategory" :valuesByIndex="projects.map(x => x.category)"
+            class="projects__category-chooser" style="margin-bottom: 61px;">
+            <template #buttons>
+                <button>Bathroom</button>
+                <button>Bed Room</button>
+                <button>Kitchan</button>
+                <button>Living Area</button>
+            </template>
+        </FilterModule>
 
 
         <ul style="margin-bottom: 61px;">
@@ -141,10 +142,49 @@ export default {
 
             width: calc(100%/4);
         }
+
         button[pressed=true] {
             background: #CDA274;
             border-radius: 18px;
             color: white;
+        }
+    }
+}
+
+//decor
+.projects {
+    &__category-chooser {
+
+        button {
+            font-family: 'Jost';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 125%;
+            letter-spacing: 0.02em;
+            color: #292F36;
+        }
+    }
+
+    .project__content {
+        h2 {
+            font-family: 'DM Serif Display';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 125%;
+            letter-spacing: 0.02em;
+            color: #292F36;
+        }
+
+        a {
+            font-family: 'Jost';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 150%;
+            letter-spacing: 0.01em;
+            color: #4D5053;
         }
     }
 }
