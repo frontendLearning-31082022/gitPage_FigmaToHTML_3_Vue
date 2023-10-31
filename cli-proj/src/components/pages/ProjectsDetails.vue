@@ -22,26 +22,15 @@
                     purus porttitor.</p>
             </div>
             <div class="projects-details__slider-image">
-
-                <!-- <div class="swiper">
-
-                </div> -->
-                <swiper :pagination="{
-                    dynamicBullets: true,
-                    paginationClickable: true,
-                }" :modules="modules" class="mySwiper" :onSlideChange="(x) => { swaped_slider(x.activeIndex); }"
-                    style="margin-bottom: 20px;" ref="slider">
+                <swiper :pagination="{dynamicBullets: true, paginationClickable: true,}" :modules="modules" 
+                class="mySwiper" :onSlideChange="(x) => { swaped_slider(x.activeIndex); }" style="margin-bottom: 20px;">
                     <swiper-slide v-for="(img_name, i) in this.slides_images" :key="i">{{ item }}<img
                             :src="require('@/assets/img/' + img_name)" alt="bedroom project image"></swiper-slide>
                 </swiper>
 
                 <div class="slider-image__controls">
-                    <button v-for="(item, i) in markers_slider" :key="i" :class="{ 'active': markers_slider[i] }"></button>
+                    <button v-for="(item, i) in markers_slider" :key="i" :class="{ 'active': markers_slider[i] }" @click="this.swiper.slideTo(i)"></button>
                 </div>
-
-
-
-                <!-- <img src="@/assets/img/projects_details_1.svg" alt="bedroom project image" style="margin-bottom: 20px;"> -->
 
             </div>
 
@@ -51,29 +40,17 @@
     </div>
 </template>
 
-
-
-<!-- , FooterSection, BannerLogoSection, FilterModule, PaginationBlock -->
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 
-// const swiper = new Swiper('.swiper', {
-//             effect: 'coverflow',
-//             coverflowEffect: {
-//                 rotate: 30,
-//                 slideShadows: false,
-//             },
-//         });
-
-
 import HeaderSection from '../sections/HeaderSection.vue'
 import BannerLogoSection from '../sections/BannerLogoSection.vue'
 import FooterSection from '../sections/FooterSection.vue'
 
-export default {  //
+export default {
     name: 'ProjectsPage',
     components: { HeaderSection, BannerLogoSection,  FooterSection, Swiper, SwiperSlide,},
 
@@ -81,7 +58,6 @@ export default {  //
         swaped_slider(newPos) {
             this.markers_slider.fill(false);
             this.markers_slider[newPos] = true;
-            debugger;
         }
     },
 
@@ -94,13 +70,10 @@ export default {  //
 
     mounted() {
         this.markers_slider.length = this.slides_images.length;
-
-
+        this.swiper = document.querySelector('.swiper').swiper;
     },
-
 }
 </script>
-
 
 <style lang="scss" >
 .projects-details {
@@ -111,16 +84,11 @@ export default {  //
     flex-direction: column;
     align-items: center;
 
-
-
-
     &__content {
         width: 54.79%;
-
         h2 {
             text-align: left;
         }
-
         p {
             text-align: justify;
         }
@@ -133,31 +101,8 @@ export default {  //
             display: block;
             width: 100%;
             aspect-ratio: 1201 / 799;
+            border-radius: 70px;
         }
-
-
-        .swiper-pagination-bullet {
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 2px solid black;
-            transform: scale(1);
-            opacity: 100%;
-
-            &-active {
-                background: black;
-            }
-        }
-
-        // .swiper {
-        //     overflow: initial;
-        //     &-slide-prev, &-slide-next {
-        //         visibility: hidden;
-        //     }
-        // }
-
-
-
 
         .slider-image__controls {
             display: flex;
@@ -170,12 +115,9 @@ export default {  //
                 border: 2px solid black;
                 width: 20px;
                 height: 20px;
-
-
             }
-
             button.active {
-                background: black;
+                background: rgb(126, 126, 126);
             }
         }
     }
@@ -193,7 +135,6 @@ article {
         letter-spacing: 0.02em;
         color: #292F36;
     }
-
     p {
         font-family: 'Jost';
         font-style: normal;
@@ -203,6 +144,5 @@ article {
         letter-spacing: 0.01em;
         color: #4D5053;
     }
-
 }
 </style>

@@ -7,12 +7,16 @@
     </BlogDetailPage> -->
 
 
-  <ProjectsPage></ProjectsPage>
+  <!-- <ProjectsPage></ProjectsPage> -->
+  <!-- <ProjectsPage></ProjectsPage> -->
+  <ProjectsDetails></ProjectsDetails>
+
 </template>
 <script>
 // import BlogPage from './components/pages/BlogPage.vue'
 // import BlogDetailPage from './components/pages/BlogDetailPage.vue'
-import ProjectsPage from './components/pages/ProjectsPage.vue'
+// import ProjectsPage from './components/pages/ProjectsPage.vue'
+import ProjectsDetails from './components/pages/ProjectsDetails.vue'
 
 export default {
   name: 'App',
@@ -30,7 +34,8 @@ export default {
   components: {
     // BlogPage
     // BlogDetailPage
-    ProjectsPage
+    // ProjectsPage,
+    ProjectsDetails
   }
 
 }
