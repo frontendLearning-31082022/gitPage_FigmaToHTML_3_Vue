@@ -22,14 +22,17 @@
                     purus porttitor.</p>
             </div>
             <div class="projects-details__slider-image">
-                <swiper :pagination="{dynamicBullets: true, paginationClickable: true,}" :modules="modules" 
-                class="mySwiper" :onSlideChange="(x) => { swaped_slider(x.activeIndex); }" style="margin-bottom: 20px;">
+                <button class="slider-image__btn-zoom" style="border: 0; background: transparent"
+                    @click=" this.swiper.zoom.in();"><img src="@/assets/img/explore-icon.svg" @click=" this.swiper.zoom.in();"></button>
+                <swiper :pagination="{ dynamicBullets: true, paginationClickable: true, }" :modules="this.modules" :zoom="true" 
+                    class="mySwiper" :onSlideChange="(x) => { swaped_slider(x.activeIndex); }" style="margin-bottom: 20px;">
                     <swiper-slide v-for="(img_name, i) in this.slides_images" :key="i">{{ item }}<img
                             :src="require('@/assets/img/' + img_name)" alt="bedroom project image"></swiper-slide>
                 </swiper>
 
                 <div class="slider-image__controls">
-                    <button v-for="(item, i) in markers_slider" :key="i" :class="{ 'active': markers_slider[i] }" @click="this.swiper.slideTo(i)"></button>
+                    <button v-for="(item, i) in markers_slider" :key="i" :class="{ 'active': markers_slider[i] }"
+                        @click="this.swiper.slideTo(i)"></button>
                 </div>
 
             </div>
@@ -44,7 +47,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Zoom } from 'swiper/modules';
 
 import HeaderSection from '../sections/HeaderSection.vue'
 import BannerLogoSection from '../sections/BannerLogoSection.vue'
@@ -52,7 +55,13 @@ import FooterSection from '../sections/FooterSection.vue'
 
 export default {
     name: 'ProjectsPage',
-    components: { HeaderSection, BannerLogoSection,  FooterSection, Swiper, SwiperSlide,},
+    components: { HeaderSection, BannerLogoSection, FooterSection, Swiper, SwiperSlide },
+
+    setup() {
+      return {
+        modules: [Zoom, Pagination]
+      };
+    },
 
     methods: {
         swaped_slider(newPos) {
@@ -86,9 +95,11 @@ export default {
 
     &__content {
         width: 54.79%;
+
         h2 {
             text-align: left;
         }
+
         p {
             text-align: justify;
         }
@@ -96,12 +107,38 @@ export default {
 
     &__slider-image {
         width: 100%;
+        position: relative;
 
         .swiper-slide img {
             display: block;
             width: 100%;
             aspect-ratio: 1201 / 799;
             border-radius: 70px;
+        }
+
+        &:hover .slider-image__btn-zoom {
+            visibility: initial;
+        }
+
+        .slider-image__btn-zoom {
+            width: 132px;
+            height: 132px;
+            position: absolute;
+            z-index: 10;
+            cursor: pointer;
+
+            visibility: hidden;
+
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            top: calc(50% - 132px/2);
+
+            img {
+                width: inherit;
+                height: inherit;
+            }
         }
 
         .slider-image__controls {
@@ -116,6 +153,7 @@ export default {
                 width: 20px;
                 height: 20px;
             }
+
             button.active {
                 background: rgb(126, 126, 126);
             }
@@ -135,6 +173,7 @@ article {
         letter-spacing: 0.02em;
         color: #292F36;
     }
+
     p {
         font-family: 'Jost';
         font-style: normal;
