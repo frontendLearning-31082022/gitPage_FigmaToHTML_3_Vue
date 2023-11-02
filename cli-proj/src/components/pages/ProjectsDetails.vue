@@ -10,15 +10,15 @@
             <div class="projects-details__content" v-html="item" v-for="(item, index) in articles" :key="index"
                 style="margin-bottom: 100px;">
             </div>
-            <!-- debugger; this.swiper.zoom.in(); -->
+
             <div class="projects-details__slider-image">
                 <button class="slider-image__btn-zoom" style="border: 0; background: transparent"
                     @click="toggle_zoom()"><img src="@/assets/img/explore-icon.svg"></button>
                 <swiper :pagination="{ dynamicBullets: true, paginationClickable: true, }" :modules="this.modules"
                     :zoom="true" class="mySwiper" :onSlideChange="(x) => { swaped_slider(x.activeIndex); }"
-                    style="margin-bottom: 20px;">
+                    style="margin-bottom: 20px;" spaceBetween="70">
                     <swiper-slide v-for="(img_name, i) in this.slides_images" :key="i">{{ item }} <div
-                            class="swiper-zoom-container"> <img :src="require('@/assets/img/' + img_name)"
+                            class="swiper-zoom-container"> <img :src="require('@/assets/img/' + img_name)+'#svgView(preserveAspectRatio(none))'"
                                 alt="bedroom project image"></div></swiper-slide>
                 </swiper>
 
@@ -45,8 +45,6 @@ import { mapGetters } from 'vuex';
 import HeaderSection from '../sections/HeaderSection.vue'
 import BannerLogoSection from '../sections/BannerLogoSection.vue'
 import FooterSection from '../sections/FooterSection.vue'
-
-
 
 export default {
     name: 'ProjectsPage',
@@ -147,6 +145,8 @@ export default {
             img {
                 width: inherit;
                 height: inherit;
+
+                border-radius: 70px;
             }
         }
 
