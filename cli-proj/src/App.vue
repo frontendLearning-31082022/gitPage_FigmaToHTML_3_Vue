@@ -5,7 +5,6 @@
       </template>
     </BlogDetailPage> -->
 
-
   <!-- <ProjectsPage></ProjectsPage> -->
   <!-- <ProjectsPage></ProjectsPage> -->
   <ProjectsDetails></ProjectsDetails>
@@ -15,8 +14,6 @@
 // import BlogDetailPage from './components/pages/BlogDetailPage.vue'
 // import ProjectsPage from './components/pages/ProjectsPage.vue'
 import ProjectsDetails from './components/pages/ProjectsDetails.vue'
-
-
 
 export default {
   name: 'App',
@@ -31,8 +28,6 @@ export default {
     //   this.articles = m.default.split('-separ-');
     // });
 
-
-
   },
   components: {
     // BlogPage
@@ -41,13 +36,11 @@ export default {
     ProjectsDetails
   },
   mounted() {
-    // import('@/data/ProjectsDetails.html').then(m => {
+
     import('@/data/ProjectsDetails.html').then(m => {
       let articles = m.default.split('-separ-');
 
-      this.$store.dispatch('ADD_ARTICLE',articles.join('\n'));
-
-      // this.articles = m.default.split('-separ-');
+      this.$store.dispatch('ADD_ARTICLE', articles.join('\n'));
     });
   },
 }

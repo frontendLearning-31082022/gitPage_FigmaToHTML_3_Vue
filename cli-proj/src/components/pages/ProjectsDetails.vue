@@ -1,29 +1,15 @@
 <template>
     <div>
-
         <HeaderSection style="margin-bottom: 45px;" />
 
         <BannerLogoSection :img_path="require('@/assets/img/banner__logo3.svg')">
         </BannerLogoSection>
 
         <article class="projects-details" style="margin-bottom: 161px;">
-            <!-- <div class="projects-details__content" style="margin-bottom: 100px;">
-                <h2>Minimal Look Bedrooms</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamsem vitae turpis dignissim maximus.
-                    Aliquam
-                    sollicitudin tellumassa, vbel maximus purus posuere in. Dojrices gravida dignissim. Praesent at nibh in
-                    mi
-                    fringilla mattis. Phasellus ut dolor odio. Aenean in the ipsum vel lectus bibendum commodo.
 
-                    In nec sem suscipit, convallis leo vitae, lacinia nibh. Cras amet tellus lectus. Vivamus ipsum nunc,
-                    mattis
-                    quis nibh id, pellentesque arcu. Donec a pellentesque Cras erat enim, gravida non ante vitae,elequis
-                    convallis elit, in viverra felis. Donec ultrices tellus vitae iaculisvd porta. Proin tincidunt ligula id
-                    purus porttitor.</p>
-            </div> -->
-
-            <div class="projects-details__content" v-for="(item, index) in articles" :key="index"  v-html="item"></div>
-
+            <div class="projects-details__content" v-html="item" v-for="(item, index) in articles" :key="index"
+                style="margin-bottom: 100px;">
+            </div>
 
             <div class="projects-details__slider-image">
                 <button class="slider-image__btn-zoom" style="border: 0; background: transparent"
@@ -53,12 +39,13 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Zoom } from 'swiper/modules';
+import { mapGetters } from 'vuex';
 
 import HeaderSection from '../sections/HeaderSection.vue'
 import BannerLogoSection from '../sections/BannerLogoSection.vue'
 import FooterSection from '../sections/FooterSection.vue'
 
-import { mapState } from 'vuex';
+
 
 export default {
     name: 'ProjectsPage',
@@ -74,7 +61,6 @@ export default {
         swaped_slider(newPos) {
             this.markers_slider.fill(false);
             this.markers_slider[newPos] = true;
-            debugger;
         }
     },
 
@@ -90,15 +76,11 @@ export default {
         this.swiper = document.querySelector('.swiper').swiper;
     },
     computed: {
-        ...mapState({
-            articles: state => state.articles.projects_details
-        })
+        ...mapGetters({ articles: 'articles_projects_details' }) // all geters for each module merged
 
-        // articles(){return this.$store.state.articles.getters.articles_proj_det; } 
-        // articles(){return 0} 
-        // ...mapGetters({
+        // ...mapState({
         //     articles: state => state.articles.projects_details
-        // })
+        // }),
     }
 }
 </script>
