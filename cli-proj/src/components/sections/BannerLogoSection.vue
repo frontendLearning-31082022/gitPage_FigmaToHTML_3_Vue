@@ -4,7 +4,7 @@
 
             <div class="banner__logo" :style="{ 'background-image': 'url(' + this.img_path + ')' }"></div>
 
-            <div class="banner__text">
+            <div class="banner__text" v-if="Object.keys( this.$slots  ).includes('text-main')" >
                 <div class="banner__text-main">
                     <slot name="text-main"></slot>
                 </div>
