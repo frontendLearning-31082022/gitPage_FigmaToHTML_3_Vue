@@ -10,15 +10,16 @@
             <div class="projects-details__content" v-html="item" v-for="(item, index) in articles" :key="index"
                 style="margin-bottom: 100px;">
             </div>
-
+            <!-- debugger; this.swiper.zoom.in(); -->
             <div class="projects-details__slider-image">
                 <button class="slider-image__btn-zoom" style="border: 0; background: transparent"
-                    @click=" this.swiper.zoom.in();"><img src="@/assets/img/explore-icon.svg"></button>
+                    @click="toggle_zoom()"><img src="@/assets/img/explore-icon.svg"></button>
                 <swiper :pagination="{ dynamicBullets: true, paginationClickable: true, }" :modules="this.modules"
                     :zoom="true" class="mySwiper" :onSlideChange="(x) => { swaped_slider(x.activeIndex); }"
                     style="margin-bottom: 20px;">
-                    <swiper-slide v-for="(img_name, i) in this.slides_images" :key="i">{{ item }}<img
-                            :src="require('@/assets/img/' + img_name)" alt="bedroom project image"></swiper-slide>
+                    <swiper-slide v-for="(img_name, i) in this.slides_images" :key="i">{{ item }} <div
+                            class="swiper-zoom-container"> <img :src="require('@/assets/img/' + img_name)"
+                                alt="bedroom project image"></div></swiper-slide>
                 </swiper>
 
                 <div class="slider-image__controls">
@@ -61,6 +62,10 @@ export default {
         swaped_slider(newPos) {
             this.markers_slider.fill(false);
             this.markers_slider[newPos] = true;
+        },
+        toggle_zoom() {
+            this.swiper.zoom.enabled = true;
+            this.swiper.zoom.toggle()
         }
     },
 
@@ -74,6 +79,9 @@ export default {
     mounted() {
         this.markers_slider.length = this.slides_images.length;
         this.swiper = document.querySelector('.swiper').swiper;
+
+        [...document.getElementsByClassName('swiper-slide')].forEach(x => x.addEventListener("click",
+            () => { if (this.swiper.zoom.scale == 1) this.swiper.zoom.enabled = false; }));  //enable scroll zoomed
     },
     computed: {
         ...mapGetters({ articles: 'articles_projects_details' }) // all geters for each module merged
