@@ -1,5 +1,4 @@
 <template>
-
   <!-- <BlogDetailPage>
       <template #[index] v-for="(item, index) in articles" :key="index">
         <div v-html="item"></div>
@@ -10,7 +9,6 @@
   <!-- <ProjectsPage></ProjectsPage> -->
   <!-- <ProjectsPage></ProjectsPage> -->
   <ProjectsDetails></ProjectsDetails>
-
 </template>
 <script>
 // import BlogPage from './components/pages/BlogPage.vue'
@@ -18,8 +16,11 @@
 // import ProjectsPage from './components/pages/ProjectsPage.vue'
 import ProjectsDetails from './components/pages/ProjectsDetails.vue'
 
+
+
 export default {
   name: 'App',
+
   data() {
     return {
       articles: []
@@ -30,14 +31,25 @@ export default {
     //   this.articles = m.default.split('-separ-');
     // });
 
+
+
   },
   components: {
     // BlogPage
     // BlogDetailPage
     // ProjectsPage,
     ProjectsDetails
-  }
+  },
+  mounted() {
+    // import('@/data/ProjectsDetails.html').then(m => {
+    import('@/data/ProjectsDetails.html').then(m => {
+      let articles = m.default.split('-separ-');
 
+      this.$store.dispatch('ADD_ARTICLE',articles.join('\n'));
+
+      // this.articles = m.default.split('-separ-');
+    });
+  },
 }
 </script>
 
