@@ -7,13 +7,15 @@
 
   <!-- <ProjectsPage></ProjectsPage> -->
   <!-- <ProjectsPage></ProjectsPage> -->
-  <ProjectsDetails></ProjectsDetails>
+  <!-- <ProjectsDetails></ProjectsDetails> -->
+  <NotFound></NotFound>
 </template>
 <script>
 // import BlogPage from './components/pages/BlogPage.vue'
 // import BlogDetailPage from './components/pages/BlogDetailPage.vue'
 // import ProjectsPage from './components/pages/ProjectsPage.vue'
-import ProjectsDetails from './components/pages/ProjectsDetails.vue'
+// import ProjectsDetails from './components/pages/ProjectsDetails.vue'
+import NotFound from './components/pages/NotFound.vue'
 
 export default {
   name: 'App',
@@ -33,7 +35,8 @@ export default {
     // BlogPage
     // BlogDetailPage
     // ProjectsPage,
-    ProjectsDetails
+    // ProjectsDetails
+    NotFound
   },
   mounted() {
 
