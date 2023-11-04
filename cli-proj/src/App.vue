@@ -8,14 +8,16 @@
   <!-- <ProjectsPage></ProjectsPage> -->
   <!-- <ProjectsPage></ProjectsPage> -->
   <!-- <ProjectsDetails></ProjectsDetails> -->
-  <NotFound></NotFound>
+  <!-- <NotFound></NotFound> -->
+  <HomePage></HomePage>
 </template>
 <script>
 // import BlogPage from './components/pages/BlogPage.vue'
 // import BlogDetailPage from './components/pages/BlogDetailPage.vue'
 // import ProjectsPage from './components/pages/ProjectsPage.vue'
 // import ProjectsDetails from './components/pages/ProjectsDetails.vue'
-import NotFound from './components/pages/NotFound.vue'
+// import NotFound from './components/pages/NotFound.vue'
+import HomePage from './components/pages/HomePage.vue'
 
 export default {
   name: 'App',
@@ -36,7 +38,8 @@ export default {
     // BlogDetailPage
     // ProjectsPage,
     // ProjectsDetails
-    NotFound
+    // NotFound
+    HomePage
   },
   mounted() {
 

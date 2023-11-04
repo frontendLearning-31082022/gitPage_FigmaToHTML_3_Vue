@@ -13,7 +13,7 @@
                 </div>
                 <h2> {{ artic.h2 }}</h2>
                 <time> {{ artic.time }}</time>
-                <button style="background: url('@/assets/img/projects__project_button_.svg')"></button>
+                <button :style="'background: url( ' + require('@/assets/img/projects__project_button_.svg') + ');'"></button>
             </article>
             <div class="blog__list__pagination">
                 <a class="active" href="#">01</a>
