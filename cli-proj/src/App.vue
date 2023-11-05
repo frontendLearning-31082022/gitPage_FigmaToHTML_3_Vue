@@ -9,7 +9,10 @@
   <!-- <ProjectsPage></ProjectsPage> -->
   <!-- <ProjectsDetails></ProjectsDetails> -->
   <!-- <NotFound></NotFound> -->
-  <HomePage></HomePage>
+  <!-- <HomePage></HomePage> -->
+
+  <router-view />
+  <!-- <router-view></router-view> -->
 </template>
 <script>
 // import BlogPage from './components/pages/BlogPage.vue'
@@ -17,7 +20,7 @@
 // import ProjectsPage from './components/pages/ProjectsPage.vue'
 // import ProjectsDetails from './components/pages/ProjectsDetails.vue'
 // import NotFound from './components/pages/NotFound.vue'
-import HomePage from './components/pages/HomePage.vue'
+// import HomePage from './components/pages/HomePage.vue'
 
 export default {
   name: 'App',
@@ -39,7 +42,7 @@ export default {
     // ProjectsPage,
     // ProjectsDetails
     // NotFound
-    HomePage
+    // HomePage
   },
   mounted() {
 
