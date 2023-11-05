@@ -19,6 +19,7 @@
 import HeaderSection from '../sections/HeaderSection.vue'
 
 export default {
+    name: 'NotFound',
     components: { HeaderSection },
 }
 </script>

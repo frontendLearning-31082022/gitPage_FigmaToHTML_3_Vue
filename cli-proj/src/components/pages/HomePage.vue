@@ -47,6 +47,7 @@ import ArticlesSection from '../sections/ArticlesSection.vue'
 
 
 export default {
+    name: 'HomePage',
     components: { HeaderSection, FooterSection, ArticlesSection },
 
     data() {
