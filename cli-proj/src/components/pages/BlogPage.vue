@@ -70,4 +70,12 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
+.blog {
+  align-items: start !important;
+}
+
+.blog > p {
+  display: none;
+}
+
 </style>

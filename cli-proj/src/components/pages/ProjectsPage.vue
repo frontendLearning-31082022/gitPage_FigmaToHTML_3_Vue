@@ -34,7 +34,7 @@
                 </div>
             </li>
         </ul>
-        <PaginationBlock />
+        <PaginationBlock  class="projects" />
     </div>
 
 

@@ -6,7 +6,7 @@
 
         <div class="blog__list">
 
-            <article class="blog__article" v-for="(artic, index) in articles" :key="index">
+            <article class="blog__article" v-for="(artic, index) in articles" :key="index" style="margin-bottom: 61px;">
                 <div class="article__img-container">
                     <img :src="require('@/assets/img/blog__article-img(' + (index + 1) + ').svg')" alt="blog article image">
                     <button class="tag" onclick="#">{{ artic.btn_tag }}</button>
@@ -16,18 +16,22 @@
                 <button
                     :style="'background: url( ' + require('@/assets/img/projects__project_button_.svg') + ');'"></button>
             </article>
-            <div class="blog__list__pagination" v-if="this.paginator">
+            
+            <PaginationBlock class="articles" ></PaginationBlock>
+        
+            <!-- <div class="blog__list__pagination" v-if="this.paginator">
                 <a class="active" href="#">01</a>
                 <a href="#">02</a>
                 <a href="#">03</a>
                 <a href="#" class="next">></a>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>
 
 <script>
-import PaginationBlock from '../sections/PaginationBlock.vue'
+// import PaginationBlock from '../sections/PaginationBlock.vue'
+import PaginationBlock from '@/components/sections/PaginationBlock.vue'
 
 export default {
     name: 'ArticlesSection',
@@ -39,7 +43,7 @@ export default {
             default: true
         }
     },
-    components: PaginationBlock
+    components: {PaginationBlock}
 }
 </script>
 
