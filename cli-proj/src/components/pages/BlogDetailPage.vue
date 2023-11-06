@@ -189,6 +189,7 @@ export default {
     margin: 0 auto;
 
     display: flex;
+    gap: 4.33%;
 
     &__articles-list {
         width: 66.94%;
@@ -222,6 +223,19 @@ export default {
             h2 {
                 margin-top: 0px;
             }
+            img {
+                margin-bottom: 46px;
+            }
+            p {
+                margin-bottom: 35px;
+            }
+            .metainfo {
+                margin-bottom: 48px;
+            }
+            .quotes {
+                margin-bottom: 27px;
+            }
+
         }
 
         .quotes {
@@ -263,7 +277,9 @@ export default {
             flex-wrap: wrap;
         }
 
-
+        button {
+            width: fit-content;
+        }
         button[checked=true] {
             background: #292F36;
             color: #FFFFFF;
@@ -360,7 +376,6 @@ export default {
     &__control-tags {
         button {
             all: unset;
-            width: 28.73%;
             font-family: 'Jost';
             font-style: normal;
             font-weight: 400;
