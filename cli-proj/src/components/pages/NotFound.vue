@@ -7,7 +7,8 @@
                 <div class="error-code">404</div>
                 <div class="error-message" style="margin-bottom: 23px;">We are sorry, but the page you requested was not
                     found</div>
-                <button class="page-not-found__back-button">Back To Home <img src="@/assets/img/arrow_right.svg"> </button>
+                <!-- <button class="page-not-found__back-button">Back To Home <img src="@/assets/img/arrow_right.svg"> </button> -->
+                <router-link to="/" class="page-not-found__back-button">Back To Home <img src="@/assets/img/arrow_right.svg"></router-link>
             </div>
             <img src="@/assets/img/page-not-found__logo.svg" alt="page not found">
         </div>
@@ -53,10 +54,11 @@ export default {
             width: 86.34%;
         }
 
-        button {
+        a {
             all: unset;
             display: flex;
             padding: 26px 54px 26px 54px;
+            cursor: pointer;
 
             width: fit-content;
             height: fit-content;
@@ -93,7 +95,7 @@ export default {
 
         }
 
-        button {
+        a {
 
             white-space: nowrap;
 

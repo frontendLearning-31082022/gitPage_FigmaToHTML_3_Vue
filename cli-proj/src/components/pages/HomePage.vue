@@ -131,6 +131,9 @@ body {
         margin: 2px 2px 2px 4.33vw;
         max-width: 36.14%;
     }
+    button {
+        cursor: pointer;
+    }
 }
 
 .projects {
@@ -176,6 +179,7 @@ body {
             position: absolute;
             right: 0px;
             bottom: 0px;
+            cursor: pointer;
         }
 
         h2 {
@@ -280,6 +284,7 @@ body {
             all: unset;
             width: 70px;
             height: 70px;
+            cursor: pointer;
 
             position: absolute;
             right: 0px;

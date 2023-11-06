@@ -3,13 +3,13 @@
     <header>
         <div class="header__logo">
             <img src="@/assets/img/header__logo.svg">
-            <h1>Interno</h1>
+            <router-link to="/" class="menu__item">Interno</router-link>
         </div>
 
         <div class="header__menu">
-            <div class="menu__item">Home</div>
-            <div class="menu__item">Project</div>
-            <div class="menu__item">Blog</div>
+            <router-link to="/" class="menu__item">Home</router-link>
+            <router-link to="/ProjectsPage" class="menu__item">Project</router-link>
+            <router-link to="/BlogPage" class="menu__item">Blog</router-link>
         </div>
     </header>
 </template>
@@ -42,12 +42,14 @@ header {
             align-items: center;
             gap: 10px;
 
-            h1 {
+            a {
                 margin: 0px;
+                text-decoration: none;
+                color: inherit;
             }
 
             img {
-                width: 1.6em;
+                width: 0.7em;
             }
 
         }
@@ -56,6 +58,12 @@ header {
             display: flex;
             gap: 44px;
             height: fit-content;
+
+            .menu__item {
+                all: unset;
+                text-decoration: none;
+                cursor: pointer;
+            }
         }
     }
 
@@ -73,7 +81,8 @@ header {
             color: #292F36;
         }
 
-        &__menu {
+        &__menu,
+        a {
             font-family: 'Jost';
             font-style: normal;
             font-weight: 400;
