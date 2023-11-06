@@ -4,7 +4,6 @@
     <div class="img-logo" :style="{ 'background-image': 'url(' + require('@/assets/img/blog-detail__logo.svg') + ')' }"
         style="margin-bottom: 200px;"></div>
 
-        {{ tagControl.tagsHided }}
 
     <section class="blog-detail" style="margin-bottom: 96px;">
         <div class="blog-detail__articles-list">
@@ -30,13 +29,11 @@
 
             </template>
 
- <!-- <div :v-html="item"></div> -->
 
-            <div v-if="Object.keys($slots).length == 0">
-
-                <div  v-for="(item, index) in articless" :key="index">
+            <template v-if="Object.keys($slots).length == 0">
+                <template v-for="(item, index) in articless" :key="index">
                     <article v-if="!tagControl.tagsHided['article_' + index]" :id="'article_' + index">
-                       
+
                         <div v-html="item"></div>
 
                         <div class="quotes">
@@ -49,18 +46,21 @@
                             </div>
                         </div>
                     </article>
-                </div>
-            </div>
+                </template>
+            </template>
 
 
 
 
         </div>
         <div class="blog-detail__control-tags">
-            <button v-for="(item, index) in this.tagControl.allTags" :key="index" @click="tagBtnClick(item)"
-                :checked="tagControl.tagsChoosed[item]">
-                {{ item }}
-            </button>
+            <div class="control-tags__title">Tags</div>
+            <div class="control-tags__buttons">
+                <button v-for="(item, index) in this.tagControl.allTags" :key="index" @click="tagBtnClick(item)"
+                    :checked="tagControl.tagsChoosed[item]">
+                    {{ item }}
+                </button>
+            </div>
         </div>
     </section>
 
@@ -103,19 +103,15 @@ export default {
                     div.innerHTML = x.trim();
                     return div;
                 });
-                // debugger;
-                articls.forEach(x => {
+                articls.forEach((x, i) => {
                     let tag = x.querySelectorAll("[class='tag']")[0].getAttribute('value');
-                    this.tagsById.set(x.id, tag);
+                    this.tagsById.set('article_' + i, tag);
                 });
-                // debugger;
                 articls.forEach(x => {
                     let tagEl = x.getElementsByClassName('tag')[0];
                     this.allTags.add(tagEl.getAttribute('value'))
                 })
-                articls.forEach((x,i) => {this.tagsHided[i]=false;});
-            
-                // debugger;
+                articls.forEach((x, i) => { this.tagsHided['article_' + i] = false; });
             },
             isHided(id) {
                 console.log(`id ${id} this.tagsHided ${this.tagsHided == true}`)
@@ -156,7 +152,6 @@ export default {
                     this.tagControl.collectData_store(this.$store.getters.articles_Blog_details);
 
                 }
-                     debugger;
             }
         }
     },
@@ -185,6 +180,8 @@ export default {
 .img-logo {
     height: 32.5vh;
     width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .blog-detail {
@@ -221,6 +218,12 @@ export default {
             }
         }
 
+        article {
+            h2 {
+                margin-top: 0px;
+            }
+        }
+
         .quotes {
             height: 24.72vh;
             position: relative;
@@ -247,10 +250,19 @@ export default {
 
     &__control-tags {
         width: 28.73%;
-        display: flex;
-        gap: 10px;
-        height: fit-content;
-        flex-wrap: wrap;
+        
+        .control-tags__title {
+            width: fit-content;
+            margin-bottom: 24px;
+        }
+
+        .control-tags__buttons {
+            display: flex;
+            gap: 10px;
+            height: fit-content;
+            flex-wrap: wrap;
+        }
+
 
         button[checked=true] {
             background: #292F36;
@@ -360,6 +372,16 @@ export default {
             padding: 9px 30px 9px 30px;
             cursor: pointer;
             border-radius: 10px;
+        }
+
+        .control-tags__title {
+            font-family: 'DM Serif Display';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 125%;
+            letter-spacing: 0.02em;
+            color: #292F36;
         }
     }
 }
