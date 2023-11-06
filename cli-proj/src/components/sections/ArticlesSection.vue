@@ -13,9 +13,10 @@
                 </div>
                 <h2> {{ artic.h2 }}</h2>
                 <time> {{ artic.time }}</time>
-                <button :style="'background: url( ' + require('@/assets/img/projects__project_button_.svg') + ');'"></button>
+                <button
+                    :style="'background: url( ' + require('@/assets/img/projects__project_button_.svg') + ');'"></button>
             </article>
-            <div class="blog__list__pagination">
+            <div class="blog__list__pagination" v-if="this.paginator">
                 <a class="active" href="#">01</a>
                 <a href="#">02</a>
                 <a href="#">03</a>
@@ -31,7 +32,12 @@ import PaginationBlock from '../sections/PaginationBlock.vue'
 export default {
     name: 'ArticlesSection',
     props: {
-        articles: []
+        articles: [],
+        paginator: {
+            type: Boolean,
+            required: false,
+            default: true
+        }
     },
     components: PaginationBlock
 }
@@ -77,6 +83,10 @@ export default {
 
         position: relative;
 
+        display: flex; //todo
+        flex-direction: column;
+        justify-content: space-between;
+
         h2 {
             margin-bottom: 39.5px;
         }
@@ -111,7 +121,7 @@ export default {
         }
 
         &:last-of-type {
-            margin-bottom: 51px;
+            // margin-bottom: 51px;
         }
     }
 }

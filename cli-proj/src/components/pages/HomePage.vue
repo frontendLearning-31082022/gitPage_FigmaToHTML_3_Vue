@@ -35,7 +35,7 @@
         </div>
     </aside>
 
-    <ArticlesSection :articles="articles" style="margin-bottom: 200px;" />
+    <ArticlesSection :articles="articles" style="margin-bottom: 200px;"  :paginator="false"/>
 
     <FooterSection></FooterSection>
 </template>
