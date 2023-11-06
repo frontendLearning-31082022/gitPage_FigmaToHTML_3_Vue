@@ -44,4 +44,14 @@ const router = createRouter({
     routes,
 })
 
+router.beforeEach((to, from, next) => {
+    document.title = to.name;
+
+    let meta = document.createElement('meta');
+    meta.setAttribute('description', 'fig ma completed page');
+    document.getElementsByTagName('head')[0].appendChild(meta);
+
+    next();
+});
+
 export default router
