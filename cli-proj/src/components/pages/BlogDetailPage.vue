@@ -4,10 +4,16 @@
     <div class="img-logo" :style="{ 'background-image': 'url(' + require('@/assets/img/blog-detail__logo.svg') + ')' }"
         style="margin-bottom: 200px;"></div>
 
+        {{ tagControl.tagsHided }}
+
     <section class="blog-detail" style="margin-bottom: 96px;">
         <div class="blog-detail__articles-list">
             <template v-for="(name, index) of Object.keys($slots)" :key="index">
                 <article v-if="!tagControl.tagsHided['article_' + name]" :id="'article_' + name">
+
+
+
+                    <div :v-html="articless[index]"></div>
 
                     <slot :name="name"></slot>
                     <div class="quotes">
@@ -23,6 +29,32 @@
                 </article>
 
             </template>
+
+ <!-- <div :v-html="item"></div> -->
+
+            <div v-if="Object.keys($slots).length == 0">
+
+                <div  v-for="(item, index) in articless" :key="index">
+                    <article v-if="!tagControl.tagsHided['article_' + index]" :id="'article_' + index">
+                       
+                        <div v-html="item"></div>
+
+                        <div class="quotes">
+                            <div class="quotes__symbol">
+                                &rdquo;
+                            </div>
+                            <div class="quotes__quote">
+                                The details are not the details. <br>
+                                They make the design.
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+
+
+
         </div>
         <div class="blog-detail__control-tags">
             <button v-for="(item, index) in this.tagControl.allTags" :key="index" @click="tagBtnClick(item)"
@@ -39,12 +71,16 @@
 import HeaderSection from '../sections/HeaderSection.vue'
 import FooterSection from '../sections/FooterSection.vue'
 
+import { mapGetters } from 'vuex';
+
 import { reactive } from 'vue'
 
 export default {
     name: 'BlogDetailPage',
 
     beforeCreate() {
+
+
         this.tagControl = reactive(Object.create({
             allTags: new Set(),
             tagsById: new Map(),
@@ -54,17 +90,39 @@ export default {
             countHided: 0,
             collectData() {
                 let articles = [...document.querySelectorAll('article')];
+
                 articles.forEach(x => {
                     let tag = x.querySelectorAll("[class='tag']")[0].getAttribute('value');
                     this.tagsById.set(x.id, tag);
                 });
                 [...document.getElementsByClassName('tag')].forEach(x => { this.allTags.add(x.getAttribute('value')) });
             },
+            collectData_store(articls) {
+                articls = articls.map(x => {
+                    let div = document.createElement('div');
+                    div.innerHTML = x.trim();
+                    return div;
+                });
+                // debugger;
+                articls.forEach(x => {
+                    let tag = x.querySelectorAll("[class='tag']")[0].getAttribute('value');
+                    this.tagsById.set(x.id, tag);
+                });
+                // debugger;
+                articls.forEach(x => {
+                    let tagEl = x.getElementsByClassName('tag')[0];
+                    this.allTags.add(tagEl.getAttribute('value'))
+                })
+                articls.forEach((x,i) => {this.tagsHided[i]=false;});
+            
+                // debugger;
+            },
             isHided(id) {
                 console.log(`id ${id} this.tagsHided ${this.tagsHided == true}`)
                 return 'display: ' + (this.tagsHided == true ? 'none;' : 'initial');
             },
             selectTag(tag) {
+                debugger;
                 this.tagsChoosed[tag] = true;
                 this.filterArticles();
             },
@@ -89,8 +147,16 @@ export default {
     mounted() {
         document.onreadystatechange = () => {
             if (document.readyState == "complete") {
-                this.tagControl.collectData();
+                // debugger;
+
                 this.articlesCount = Object.values(this.$slots).length;
+                if (this.articlesCount != 0) {
+                    this.tagControl.collectData();
+                } else {
+                    this.tagControl.collectData_store(this.$store.getters.articles_Blog_details);
+
+                }
+                     debugger;
             }
         }
     },
@@ -102,10 +168,16 @@ export default {
             let tag = id;
             let state = this.tagControl.tagsChoosed[id] == true ? true : false;
 
+            debugger;
+
             if (!state) this.tagControl.selectTag(tag);
             if (state) this.tagControl.unSelectTag(tag);
         }
     },
+
+    computed: {
+        ...mapGetters({ articless: 'articles_Blog_details' }) // all geters for each module merged
+    }
 }
 </script>
 

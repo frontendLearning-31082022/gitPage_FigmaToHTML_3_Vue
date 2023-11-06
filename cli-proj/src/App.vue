@@ -32,7 +32,9 @@ export default {
   },
   beforeCreate() {
     // import('@/data/DataBlogArticles.html').then(m => {
+    //   debugger;
     //   this.articles = m.default.split('-separ-');
+    //   this.$store.dispatch('ADD_ARTICLE', articles.join('\n'));
     // });
 
   },
@@ -45,6 +47,12 @@ export default {
     // HomePage
   },
   mounted() {
+      import('@/data/DataBlogArticles.html').then(m => {
+        this.articles = m.default.split('-separ-');
+        // debugger;
+      this.$store.dispatch('ADD_ARTICLES_BLOG_DETAILS', this.articles);
+    });
+
 
     import('@/data/ProjectsDetails.html').then(m => {
       let articles = m.default.split('-separ-');
