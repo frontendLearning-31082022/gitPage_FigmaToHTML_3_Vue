@@ -1,5 +1,5 @@
 <template>
-    <div class="pagination-block">
+    <div :class="(this.class ? this.class+'__pagination-block':'') + ' pagination-block'">
         <a class="active" href="#">01</a>
         <a href="#">02</a>
         <a href="#">03</a>
@@ -9,7 +9,13 @@
 
 <script>
 export default {
-    name: 'PaginationBlock'
+    name: 'PaginationBlock',
+    props: {
+        class: {
+            type: String,
+            default: ''
+        }
+    }
 
 }
 </script>

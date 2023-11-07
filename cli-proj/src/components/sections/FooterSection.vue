@@ -15,9 +15,12 @@
         <nav class="nav-pages">
             <h2>Pages</h2>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><router-link to="/" class="menu__item">Home</router-link></li>
+                <li><router-link to="/BlogPage" class="menu__item">Blog</router-link></li>
+                <li><router-link to="/ProjectsPage" class="menu__item">Project</router-link></li>
+                <!-- <li><a href="#">Home</a></li>
                 <li><a href="#">Project</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="#">Blog</a></li> -->
             </ul>
         </nav>
 

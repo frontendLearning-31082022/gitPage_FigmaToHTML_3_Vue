@@ -6,34 +6,45 @@
 
         <div class="blog__list">
 
-            <article class="blog__article" v-for="(artic, index) in articles" :key="index">
+            <article class="blog__article" v-for="(artic, index) in articles" :key="index" style="margin-bottom: 61px;">
                 <div class="article__img-container">
                     <img :src="require('@/assets/img/blog__article-img(' + (index + 1) + ').svg')" alt="blog article image">
                     <button class="tag" onclick="#">{{ artic.btn_tag }}</button>
                 </div>
                 <h2> {{ artic.h2 }}</h2>
                 <time> {{ artic.time }}</time>
-                <button style="background: url('@/assets/img/projects__project_button_.svg')"></button>
+                <button
+                    :style="'background: url( ' + require('@/assets/img/projects__project_button_.svg') + ');'"></button>
             </article>
-            <div class="blog__list__pagination">
+
+
+            <PaginationBlock class="articles" v-if="this.paginator"></PaginationBlock>
+
+            <!-- <div class="blog__list__pagination" v-if="this.paginator">
                 <a class="active" href="#">01</a>
                 <a href="#">02</a>
                 <a href="#">03</a>
                 <a href="#" class="next">></a>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>
 
 <script>
-import PaginationBlock from '../sections/PaginationBlock.vue'
+// import PaginationBlock from '../sections/PaginationBlock.vue'
+import PaginationBlock from '@/components/sections/PaginationBlock.vue'
 
 export default {
     name: 'ArticlesSection',
     props: {
-        articles: []
+        articles: [],
+        paginator: {
+            type: Boolean,
+            required: false,
+            default: true
+        }
     },
-    components: PaginationBlock
+    components: { PaginationBlock }
 }
 </script>
 
@@ -68,6 +79,12 @@ export default {
     }
 
 
+    &__article:hover {
+        background: #E7E7E7;
+        border-radius: 16.23%;
+
+    }
+
     &__article {
         width: calc(33.33% - 21px);
         padding: 21px;
@@ -77,8 +94,13 @@ export default {
 
         position: relative;
 
+        display: flex; //todo
+        flex-direction: column;
+        justify-content: space-between;
+
         h2 {
             margin-bottom: 39.5px;
+            min-height: 95px;
         }
 
         .article__img-container {
@@ -91,12 +113,17 @@ export default {
 
         button {
             all: unset;
-            width: 70px;
-            height: 70px;
+            width: 52px;
+            height: 52px;
+
+            margin-right: 5.5%;
+            margin-bottom: 9.95%;
+            background-size: cover !important;
 
             position: absolute;
             right: 0px;
             bottom: 0px;
+            cursor: pointer;
         }
 
         .tag {
@@ -110,7 +137,7 @@ export default {
         }
 
         &:last-of-type {
-            margin-bottom: 51px;
+            // margin-bottom: 51px;
         }
     }
 }

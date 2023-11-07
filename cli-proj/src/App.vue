@@ -7,13 +7,20 @@
 
   <!-- <ProjectsPage></ProjectsPage> -->
   <!-- <ProjectsPage></ProjectsPage> -->
-  <ProjectsDetails></ProjectsDetails>
+  <!-- <ProjectsDetails></ProjectsDetails> -->
+  <!-- <NotFound></NotFound> -->
+  <!-- <HomePage></HomePage> -->
+
+  <router-view />
+  <!-- <router-view></router-view> -->
 </template>
 <script>
 // import BlogPage from './components/pages/BlogPage.vue'
 // import BlogDetailPage from './components/pages/BlogDetailPage.vue'
 // import ProjectsPage from './components/pages/ProjectsPage.vue'
-import ProjectsDetails from './components/pages/ProjectsDetails.vue'
+// import ProjectsDetails from './components/pages/ProjectsDetails.vue'
+// import NotFound from './components/pages/NotFound.vue'
+// import HomePage from './components/pages/HomePage.vue'
 
 export default {
   name: 'App',
@@ -25,7 +32,9 @@ export default {
   },
   beforeCreate() {
     // import('@/data/DataBlogArticles.html').then(m => {
+    //   debugger;
     //   this.articles = m.default.split('-separ-');
+    //   this.$store.dispatch('ADD_ARTICLE', articles.join('\n'));
     // });
 
   },
@@ -33,9 +42,17 @@ export default {
     // BlogPage
     // BlogDetailPage
     // ProjectsPage,
-    ProjectsDetails
+    // ProjectsDetails
+    // NotFound
+    // HomePage
   },
   mounted() {
+      import('@/data/DataBlogArticles.html').then(m => {
+        this.articles = m.default.split('-separ-');
+        // debugger;
+      this.$store.dispatch('ADD_ARTICLES_BLOG_DETAILS', this.articles);
+    });
+
 
     import('@/data/ProjectsDetails.html').then(m => {
       let articles = m.default.split('-separ-');

@@ -1,7 +1,7 @@
 <template>
     <HeaderSection style="margin-bottom: 45px;" />
 
-    <BannerLogoSection :img_path="require('@/assets/img/banner__logo2.svg')">
+    <BannerLogoSection img_path="banner__logo2.svg">
         <template v-slot:text-main>Our Project</template>
         <template v-slot:text-addition>Home / Project</template>
     </BannerLogoSection>
@@ -34,7 +34,7 @@
                 </div>
             </li>
         </ul>
-        <PaginationBlock />
+        <PaginationBlock  class="projects" />
     </div>
 
 
