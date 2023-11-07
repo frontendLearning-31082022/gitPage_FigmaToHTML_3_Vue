@@ -16,9 +16,10 @@
                 <button
                     :style="'background: url( ' + require('@/assets/img/projects__project_button_.svg') + ');'"></button>
             </article>
-            
-            <PaginationBlock class="articles" ></PaginationBlock>
-        
+
+
+            <PaginationBlock class="articles" v-if="this.paginator"></PaginationBlock>
+
             <!-- <div class="blog__list__pagination" v-if="this.paginator">
                 <a class="active" href="#">01</a>
                 <a href="#">02</a>
@@ -43,7 +44,7 @@ export default {
             default: true
         }
     },
-    components: {PaginationBlock}
+    components: { PaginationBlock }
 }
 </script>
 
@@ -78,6 +79,12 @@ export default {
     }
 
 
+    &__article:hover {
+        background: #E7E7E7;
+        border-radius: 16.23%;
+
+    }
+
     &__article {
         width: calc(33.33% - 21px);
         padding: 21px;
@@ -93,6 +100,7 @@ export default {
 
         h2 {
             margin-bottom: 39.5px;
+            min-height: 95px;
         }
 
         .article__img-container {
@@ -105,8 +113,12 @@ export default {
 
         button {
             all: unset;
-            width: 70px;
-            height: 70px;
+            width: 52px;
+            height: 52px;
+
+            margin-right: 5.5%;
+            margin-bottom: 9.95%;
+            background-size: cover !important;
 
             position: absolute;
             right: 0px;
