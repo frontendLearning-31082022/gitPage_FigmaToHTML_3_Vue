@@ -1,8 +1,15 @@
 <template>
     <div>
+        <!-- <img
+                                :src="require('@/assets/img/banner__logo2.svg') + '#svgView(preserveAspectRatio(none))'"
+                              class="tesst"  alt="bedroom project image"> -->
         <div class="banner" style="margin-bottom: 200px;">
 
-            <div class="banner__logo" :style="{ 'background-image': 'url(' + this.img_path + ')' }"></div>
+            <!-- <div class="banner__logo" :style="{ 'background-image': 'url(' + this.img_path +')' }"></div> -->
+
+            <img
+                                :src="require('@/assets/img/'+this.img_path)+ '#svgView(preserveAspectRatio(none))'"
+                              class="banner__logo"  alt="bedroom project image">
 
             <div class="banner__text" v-if="Object.keys( this.$slots  ).includes('text-main')" >
                 <div class="banner__text-main">
@@ -23,8 +30,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.banner {
+<style lang="scss">
+.banner, .tesst {
     position: relative;
     display: flex;
     justify-content: center;

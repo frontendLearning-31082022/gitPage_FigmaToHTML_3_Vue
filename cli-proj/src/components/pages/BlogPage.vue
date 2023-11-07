@@ -4,7 +4,7 @@ import HeaderSection from '../sections/HeaderSection.vue';
 <template>
   <HeaderSection style="margin-bottom: 45px;" />
 
-  <BannerLogoSection :img_path="require('@/assets/img/banner__logo.svg')">
+  <BannerLogoSection img_path="banner__logo.svg">
     <template v-slot:text-main>Articles & News</template>
     <template v-slot:text-addition>Home / Blog</template>
   </BannerLogoSection>
@@ -76,6 +76,10 @@ export default {
 
 .blog > p {
   display: none;
+}
+
+.banner__text-main {
+  font-size: 13cqw;
 }
 
 </style>

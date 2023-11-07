@@ -1,9 +1,7 @@
 <template>
     <HeaderSection style="margin-bottom: 45px;" />
 
-    <div class="img-logo" :style="{ 'background-image': 'url(' + require('@/assets/img/blog-detail__logo.svg') + ')' }"
-        style="margin-bottom: 200px;"></div>
-
+    <BannerLogoSection img_path="blog-detail__logo.svg" style="margin-bottom: 200px;"></BannerLogoSection>
 
     <section class="blog-detail" style="margin-bottom: 96px;">
         <div class="blog-detail__articles-list">
@@ -70,6 +68,7 @@
 <script>
 import HeaderSection from '../sections/HeaderSection.vue'
 import FooterSection from '../sections/FooterSection.vue'
+import BannerLogoSection from '../sections/BannerLogoSection.vue'
 
 import { mapGetters } from 'vuex';
 
@@ -156,7 +155,7 @@ export default {
         }
     },
     components: {
-        HeaderSection, FooterSection
+        HeaderSection, FooterSection, BannerLogoSection
     },
     methods: {
         tagBtnClick(id) {
@@ -223,15 +222,19 @@ export default {
             h2 {
                 margin-top: 0px;
             }
+
             img {
                 margin-bottom: 46px;
             }
+
             p {
                 margin-bottom: 35px;
             }
+
             .metainfo {
                 margin-bottom: 48px;
             }
+
             .quotes {
                 margin-bottom: 27px;
             }
@@ -264,7 +267,7 @@ export default {
 
     &__control-tags {
         width: 28.73%;
-        
+
         .control-tags__title {
             width: fit-content;
             margin-bottom: 24px;
@@ -280,6 +283,7 @@ export default {
         button {
             width: fit-content;
         }
+
         button[checked=true] {
             background: #292F36;
             color: #FFFFFF;

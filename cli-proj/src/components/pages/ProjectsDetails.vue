@@ -2,7 +2,7 @@
     <div>
         <HeaderSection style="margin-bottom: 45px;" />
 
-        <BannerLogoSection :img_path="require('@/assets/img/banner__logo3.svg')">
+        <BannerLogoSection img_path="banner__logo3.svg">
         </BannerLogoSection>
 
         <article class="projects-details" style="margin-bottom: 161px;">
